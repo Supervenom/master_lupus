@@ -68,7 +68,7 @@ public class Death extends Activity{
 			while (!mCursor.isAfterLast()) {
 				String a = mCursor.getString(character);
 				String b = mCursor.getString(action);
-				if ((a.equals("werewolf")) && (!b.equals(label))) i = i + 1;
+				if ((a.equals("werewolf")) && (!b.equals("label"))) i = i + 1;
 				mCursor.moveToNext();
 			}
 			mdbhelper.close();
@@ -97,7 +97,7 @@ public class Death extends Activity{
 			while (!mCursor.isAfterLast()) {
 				String a = mCursor.getString(character);
 				String b = mCursor.getString(action);
-				if ((a.equals("werewolf")) && (!b.equals(label))) deaths[0] = b;
+				if ((a.equals("werewolf")) && (!b.equals("label"))) deaths[0] = b;
 				mCursor.moveToNext();
 			}
 			mdbhelper.close();

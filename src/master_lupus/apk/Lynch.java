@@ -1,9 +1,12 @@
 package master_lupus.apk;
 
+import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.widget.ArrayAdapter;
 
-public class Lynch {
+public class Lynch extends Activity {
 	
 	Context mContext;
 	
@@ -14,7 +17,10 @@ public class Lynch {
 	public ArrayAdapter<String> createSpinnerAdapter() {
 		
 		DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
-    	try {
+    	
+		int i = 0;
+		
+		try {
     		 
     		mdbhelper.openDataBase();
 

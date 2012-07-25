@@ -96,7 +96,7 @@ public class Paparazzo extends Activity {
 		boolean exit = false;
 		String spied = spied().toString();
 		String wentout = "went out";
-		String rested = "was at home"
+		String rested = "was at home";
 		
 		
 		DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
@@ -126,7 +126,8 @@ public class Paparazzo extends Activity {
 		if (b.equals("guardian")) exit = true;
 		if (b.equals("werewolf1")) exit = true;
 		if (exit) return wentout;
-		else if (!exit) return rested;
+		if (!exit) return rested;
+		return "error";
 	}
 
 }

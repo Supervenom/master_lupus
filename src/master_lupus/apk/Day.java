@@ -14,18 +14,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Day extends Activity  {
+	
+	Intent mIntent;
+	Lynch mLynch;
+	Context mContext;
+	
 	/** Called when the activity is first created. */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.day);
         
-        Context mContext = this;
+        mContext = this;
         
         Paparazzo mPaparazzo = new Paparazzo(mContext);
         Death mDeath = new Death(mContext);
-        Lynch mLynch = new Lynch(mContext);
-		Intent mIntent;
+        mLynch = new Lynch(mContext);
         
         ArrayAdapter<String> adapter1 = mDeath.createSpinnerAdapter();
         ArrayAdapter<String> adapter2 = mPaparazzo.createSpinnerAdapter();
@@ -49,7 +53,7 @@ public class Day extends Activity  {
             public void onClick(View v) {
             	String lynched = choose.getItemAtPosition(choose.getSelectedItemPosition()).toString();
 				mLynch.kill(lynched);
-				mIntent = new Intent(mContext, NightWolves.class);//poi ci sara' il controllo per la puttana
+				//mIntent = new Intent(mContext, NightWolves.class);//poi ci sara' il controllo per la puttana
 	            startActivity(mIntent);
 	            finish();
             }
