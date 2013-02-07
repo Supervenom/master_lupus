@@ -30,5 +30,8 @@
     <string name="lynched">has been lynched</string>
     <string name="he">He</string>
     <string name="startnight">Start Night</string>
+    <string name="bite">To bite</string>
+    <string name="whobites">Who bites?</string>
+    <string name="nightwolves">NightWolves</string>
     
 </resources>

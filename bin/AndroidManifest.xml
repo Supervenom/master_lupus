@@ -48,6 +48,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".NightWolves"
+            android:label="@string/nightwolves" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".NightOneGuardian"
             android:label="@string/nightoneguardian" >
             <intent-filter>

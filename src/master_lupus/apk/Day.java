@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -53,16 +52,52 @@ public class Day extends Activity  {
             public void onClick(View v) {
             	String lynched = choose.getItemAtPosition(choose.getSelectedItemPosition()).toString();
 				mLynch.kill(lynched);
-				//mIntent = new Intent(mContext, NightWolves.class);//poi ci sara' il controllo per la puttana
+				newturn();
+				mIntent = new Intent(mContext, NightWolves.class);//poi ci sara' il controllo per la puttana
 	            startActivity(mIntent);
 	            finish();
             }
         });
 		
 	}
+	
+	private void newturn() {
+		DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
+    	try {
+    		 
+    		mdbhelper.openDataBase();
+
+    	}catch(SQLException sqle){
+
+    		throw sqle;
+
+    	}
+    	Cursor mCursor = mdbhelper.fetchAllReminders();
+    	startManagingCursor(mCursor);
+    	mCursor.moveToFirst();
+    	int action = mCursor.getColumnIndexOrThrow(mdbhelper.action);
+    	int id = mCursor.getColumnIndexOrThrow(mdbhelper.id);
+    	while (!mCursor.isAfterLast()) {
+    		String a = mCursor.getString(action);
+    		if (!a.equals("dead")) {
+    			long rowId = mCursor.getLong(id);
+    			mdbhelper.insertAction(rowId, "label");
+    		}
+    		mCursor.moveToNext();
+    	}
+    	mdbhelper.close();
+	}
 }
 
-//Alla fine del giorno rimettere "label" a tutta la colonna azioni, meglio dopo la lettura. NON se 
-//e' "dead"
+
+
+//Rinominare i lupi werewolf
 
 //Chiamare il lupo che uccide werewolf1 e l'altro werewolf ogni volta alla fine della activity lupo
+
+
+
+
+
+//Alla fine del giorno rimettere "label" a tutta la colonna azioni, meglio dopo la lettura. NON se 
+//e' "dead" (fatto)

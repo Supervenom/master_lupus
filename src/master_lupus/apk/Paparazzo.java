@@ -77,18 +77,22 @@ public class Paparazzo extends Activity {
 		i = 0;
 		while (!mCursor.isAfterLast()) {
 			String a = mCursor.getString(action);
-    		String b = mCursor.getString(character);
-    		String c = mCursor.getString(name);
-    		if ((a.equals(spied))&& (!b.equals("paparazzo"))) {
-    			visitors[i] = c; 
-    			i++;
-    		}
-    		mCursor.moveToNext();
+			String b = mCursor.getString(character);
+			String c = mCursor.getString(name);
+			if ((a.equals(spied))&& (!b.equals("paparazzo"))) {
+				visitors[i] = c; 
+				i++;
+			}
+			mCursor.moveToNext();
 		}
 		mdbhelper.close();
+		String[] novisitors = new String[1];
+		novisitors[0] = "Nobody";
 		// Creiamo l'adapter
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(mContext,android.R.layout.simple_spinner_item, visitors);
+		ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(mContext,android.R.layout.simple_spinner_item, novisitors);
 		// Lo ritorniamo
+		if (i==0) return arrayAdapter2;
 		return arrayAdapter;
 	}
 	
@@ -96,7 +100,7 @@ public class Paparazzo extends Activity {
 		boolean exit = false;
 		String spied = spied().toString();
 		String wentout = "went out";
-		String rested = "was at home";
+		String rested = "stayed at home";
 		
 		
 		DataBaseHelper mdbhelper = new DataBaseHelper (mContext);

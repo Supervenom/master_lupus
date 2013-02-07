@@ -16,6 +16,7 @@ public final class R {
     public static final class id {
         public static final int button1=0x7f05000c;
         public static final int button10=0x7f050019;
+        public static final int button102=0x7f050026;
         public static final int button2=0x7f05000e;
         public static final int button20=0x7f050021;
         public static final int button21=0x7f05000a;
@@ -38,6 +39,8 @@ public final class R {
         public static final int editText7=0x7f05001f;
         public static final int editText9=0x7f050018;
         public static final int spinner1=0x7f050020;
+        public static final int spinner100=0x7f050024;
+        public static final int spinner101=0x7f050025;
         public static final int spinner2=0x7f050001;
         public static final int spinner3=0x7f050004;
         public static final int spinner4=0x7f050008;
@@ -59,9 +62,11 @@ public final class R {
         public static final int nightonepeasants=0x7f030004;
         public static final int nightoneveggente=0x7f030005;
         public static final int nightonewolves=0x7f030006;
+        public static final int nightwolves=0x7f030007;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
+        public static final int bite=0x7f04001d;
         public static final int choose=0x7f040011;
         public static final int day=0x7f040016;
         public static final int died=0x7f040017;
@@ -77,6 +82,7 @@ public final class R {
         public static final int nightonepeasants=0x7f040002;
         public static final int nightoneveggente=0x7f040013;
         public static final int nightonewolves=0x7f04000e;
+        public static final int nightwolves=0x7f04001f;
         public static final int paparazzo=0x7f040009;
         public static final int peasant=0x7f040006;
         public static final int play=0x7f04000c;
@@ -89,6 +95,7 @@ public final class R {
         public static final int veggente=0x7f040008;
         public static final int wentohim=0x7f040019;
         public static final int werewolf=0x7f040007;
+        public static final int whobites=0x7f04001e;
         public static final int zero=0x7f04000b;
     }
 }

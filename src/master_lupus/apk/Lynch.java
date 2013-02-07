@@ -85,7 +85,7 @@ public class Lynch extends Activity {
     	}
 		long rowId = mCursor.getLong(id);
 		mdbhelper.insertAction(rowId, "dead");
-		
+		mdbhelper.close();
 	}
 
 }
