@@ -40,8 +40,8 @@ public class NightWolves extends Activity  {
 	        next.setOnClickListener(new View.OnClickListener() {
 	            @SuppressWarnings("deprecation")
 				public void onClick(View v) {
-	            	//String c = killer.getItemAtPosition(killer.getSelectedItemPosition()).toString();
-	            	//String d = moriturus.getItemAtPosition(moriturus.getSelectedItemPosition()).toString();
+	            	String c = killer.getItemAtPosition(killer.getSelectedItemPosition()).toString();
+	            	String d = moriturus.getItemAtPosition(moriturus.getSelectedItemPosition()).toString();
 	            	DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
 	            	try {
 	            		 
@@ -58,15 +58,15 @@ public class NightWolves extends Activity  {
 	            	int name = mCursor.getColumnIndexOrThrow(mdbhelper.name);
 	            	int id = mCursor.getColumnIndexOrThrow(mdbhelper.id);
 	            	mCursor.moveToFirst();
-	            	//while (!mCursor.isAfterLast()) {
-	            	//	String b = mCursor.getString(name);
-	            	//	if (b.equals(c))  break;
-	            	//	mCursor.moveToNext();
-	            	//}
-	            	//long rowId = mCursor.getLong(id);
-	            	//mdbhelper.insertAction(rowId, d);
+	            	while (!mCursor.isAfterLast()) {
+	            		String b = mCursor.getString(name);
+	            		if (b.equals(c))  break;
+	            		mCursor.moveToNext();
+	            	}
+	            	long rowId = mCursor.getLong(id);
+	            	mdbhelper.insertAction(rowId, d);
 	            	mdbhelper.close();
-	            	//mIntent = new Intent(mContext, Day.class);
+	            	mIntent = new Intent(mContext, NightPaparazzo.class);
 	            	startActivity(mIntent);
 	            	finish();
 	            }

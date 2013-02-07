@@ -16,7 +16,7 @@ public final class R {
     public static final class id {
         public static final int button1=0x7f05000c;
         public static final int button10=0x7f050019;
-        public static final int button102=0x7f050026;
+        public static final int button102=0x7f050027;
         public static final int button2=0x7f05000e;
         public static final int button20=0x7f050021;
         public static final int button21=0x7f05000a;
@@ -39,8 +39,9 @@ public final class R {
         public static final int editText7=0x7f05001f;
         public static final int editText9=0x7f050018;
         public static final int spinner1=0x7f050020;
-        public static final int spinner100=0x7f050024;
-        public static final int spinner101=0x7f050025;
+        public static final int spinner100=0x7f050025;
+        public static final int spinner101=0x7f050026;
+        public static final int spinner102=0x7f050024;
         public static final int spinner2=0x7f050001;
         public static final int spinner3=0x7f050004;
         public static final int spinner4=0x7f050008;
@@ -62,7 +63,8 @@ public final class R {
         public static final int nightonepeasants=0x7f030004;
         public static final int nightoneveggente=0x7f030005;
         public static final int nightonewolves=0x7f030006;
-        public static final int nightwolves=0x7f030007;
+        public static final int nightpaparazzo=0x7f030007;
+        public static final int nightwolves=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
@@ -82,6 +84,7 @@ public final class R {
         public static final int nightonepeasants=0x7f040002;
         public static final int nightoneveggente=0x7f040013;
         public static final int nightonewolves=0x7f04000e;
+        public static final int nightpaparazzo=0x7f040020;
         public static final int nightwolves=0x7f04001f;
         public static final int paparazzo=0x7f040009;
         public static final int peasant=0x7f040006;

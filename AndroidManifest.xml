@@ -41,6 +41,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".NightPaparazzo"
+            android:label="@string/nightpaparazzo" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".NightOneVeggente"
             android:label="@string/nightoneveggente" >
             <intent-filter>
