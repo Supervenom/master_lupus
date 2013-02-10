@@ -10,12 +10,6 @@
         android:layout_height="wrap_content"
         android:text="@string/veggente"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10" />
 
     <TextView
         android:id="@+id/textView2"

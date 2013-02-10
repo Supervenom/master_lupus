@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-public class NightPaparazzo extends Activity  {
+public class NightGuardian extends Activity  {
 
 	Context mContext;	
 	Intent mIntent;
@@ -22,21 +20,21 @@ public class NightPaparazzo extends Activity  {
 		@Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.nightpaparazzo);
+	        setContentView(R.layout.nightguardian);
 	        
 	        mContext = this;
 	        
-	        Button next = (Button) findViewById(R.id.button8);
-	        ArrayAdapter<String> adapter1 = createSpinnerAdapterSpied();
+	        Button next = (Button) findViewById(R.id.button10);
+	        ArrayAdapter<String> adapter1 = createSpinnerAdapterGuarded();
 	        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	        final Spinner spied = (Spinner) findViewById(R.id.spinner102);
-	        spied.setAdapter(adapter1);
+	        final Spinner guarded = (Spinner) findViewById(R.id.spinner1);
+	        guarded.setAdapter(adapter1);
+	        
 	        
 	        next.setOnClickListener(new View.OnClickListener() {
 	            @SuppressWarnings("deprecation")
 				public void onClick(View v) {
-	            	
-	            	String d = spied.getItemAtPosition(spied.getSelectedItemPosition()).toString();
+	            	String d = guarded.getItemAtPosition(guarded.getSelectedItemPosition()).toString();
 	            	DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
 	            	try {
 	            		 
@@ -54,7 +52,7 @@ public class NightPaparazzo extends Activity  {
 	            	mCursor.moveToFirst();
 	            	while (!mCursor.isAfterLast()) {
 	            		String a = mCursor.getString(character);
-	            		if (a.equals("paparazzo"))  break;
+	            		if (a.equals("guardian"))  break;
 	            		mCursor.moveToNext();
 	            	}
 	            	long rowId = mCursor.getLong(id);
@@ -62,15 +60,14 @@ public class NightPaparazzo extends Activity  {
 	            	mCursor.moveToNext();
 	            	String a = mCursor.getString(character);
 	            	mdbhelper.close();
-	            	if (a.equals("guardian")) mIntent = new Intent(mContext, NightGuardian.class);
-	            	//if (a.equals("veggente")) mIntent = new Intent(mContext, NightVeggente.class);
+	            	if (a.equals("veggente")) mIntent = new Intent(mContext, NightVeggente.class);
 	            	startActivity(mIntent);
 	            	finish();
 	            }
 	        });
 		}
 		
-		private ArrayAdapter<String> createSpinnerAdapterSpied() {
+private ArrayAdapter<String> createSpinnerAdapterGuarded() {
 			
 			int i = 0;
 			
@@ -87,12 +84,10 @@ public class NightPaparazzo extends Activity  {
         	Cursor mCursor = mdbhelper.fetchAllReminders();
         	startManagingCursor(mCursor);
         	mCursor.moveToFirst();
-        	int character = mCursor.getColumnIndexOrThrow(mdbhelper.character);
         	int action = mCursor.getColumnIndexOrThrow(mdbhelper.action);
         	while (!mCursor.isAfterLast()) {
-        		String b = mCursor.getString(character);
         		String c = mCursor.getString(action);
-        		if ((!b.equals("paparazzo")) && (!c.equals("dead"))) i = i + 1;
+        		if (!c.equals("dead")) i = i + 1;
         		mCursor.moveToNext();
         	}
         	mdbhelper.close();
@@ -115,9 +110,8 @@ public class NightPaparazzo extends Activity  {
         	int name = mCursor.getColumnIndexOrThrow(mdbhelper.name);
         	mCursor.moveToFirst();
         	while (!mCursor.isAfterLast()) {
-        		String b = mCursor.getString(character);
         		String c = mCursor.getString(action);
-        		if ((!b.equals("paparazzo")) && (!c.equals("dead"))) {
+        		if (!c.equals("dead")) {
         			data[i] = mCursor.getString(name);
         			i++;
         		}

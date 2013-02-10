@@ -55,6 +55,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".NightVeggente"
+            android:label="@string/nightveggente" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".NightWolves"
             android:label="@string/nightwolves" >
             <intent-filter>
@@ -64,6 +71,13 @@
         <activity
             android:name=".NightOneGuardian"
             android:label="@string/nightoneguardian" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NightGuardian"
+            android:label="@string/nightguardian" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

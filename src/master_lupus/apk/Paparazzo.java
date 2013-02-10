@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 public class Paparazzo extends Activity {
 
@@ -125,10 +124,11 @@ public class Paparazzo extends Activity {
     		mCursor.moveToNext();
     	}
 		String b = mCursor.getString(character);
+		String c = mCursor.getString(action);
 		mdbhelper.close();
 		if (b.equals("veggente")) exit = true;
 		if (b.equals("guardian")) exit = true;
-		if (b.equals("werewolf1")) exit = true;
+		if ((b.equals("werewolf")) && (!c.equals("label"))) exit = true;
 		if (exit) return wentout;
 		if (!exit) return rested;
 		return "error";

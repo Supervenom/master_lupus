@@ -21,6 +21,7 @@
     <string name="choose">Choose</string>
     <string name="veggeggiare">To veggeggiare</string>
     <string name="nightoneveggente">NightOneVeggente</string>
+    <string name="nightveggente">NightVeggente</string>
     <string name="nightoneguardian">NightOneGuardian</string>
     <string name="protect">To protect</string>
     <string name="day">Day</string>
@@ -34,5 +35,6 @@
     <string name="whobites">Who bites?</string>
     <string name="nightwolves">NightWolves</string>
     <string name="nightpaparazzo">NightPaparazzo</string>
+    <string name="nightguardian">NightGuardian</string>
     
 </resources>

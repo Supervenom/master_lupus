@@ -68,12 +68,12 @@ public class Death extends Activity{
 			while (!mCursor.isAfterLast()) {
 				String a = mCursor.getString(character);
 				String b = mCursor.getString(action);
-				if ((a.equals("werewolf")) && (!b.equals("label"))) i = i + 1;
+				if ((a.equals("werewolf")) && (!b.equals("label")) && (!b.equals("dead"))) i = i + 1;//controllo guardia da aggiungere
 				mCursor.moveToNext();
 			}
 			mdbhelper.close();
 		}
-		//Da inserire lupi e criceto che incrementano i
+		
 		String[] deaths = new String[i];
 		if (nightOne()) {    
 			deaths[0] = "Master";
@@ -97,8 +97,8 @@ public class Death extends Activity{
 			while (!mCursor.isAfterLast()) {
 				String a = mCursor.getString(character);
 				String b = mCursor.getString(action);
-				if ((a.equals("werewolf")) && (!b.equals("label"))) deaths[0] = b;
-				mCursor.moveToNext();
+				if ((a.equals("werewolf")) && (!b.equals("label")) && (!b.equals("dead"))) deaths[0] = b;//controllo guardia da aggiungere
+				mCursor.moveToNext();                                             //segnare "dead" ai morti
 			}
 			mdbhelper.close();
 		}

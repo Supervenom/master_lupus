@@ -61,7 +61,7 @@ public class Day extends Activity  {
 		
 	}
 	
-	private void newturn() {
+	private void newturn() {//inserire controllo vittoria/sconfitta
 		DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
     	try {
     		 
@@ -91,13 +91,4 @@ public class Day extends Activity  {
 
 
 
-//Rinominare i lupi werewolf
-
-//Chiamare il lupo che uccide werewolf1 e l'altro werewolf ogni volta alla fine della activity lupo
-
-
-
-
-
-//Alla fine del giorno rimettere "label" a tutta la colonna azioni, meglio dopo la lettura. NON se 
-//e' "dead" (fatto)
+//Da fare: trovare un modo per non far fare le azioni ai morti. Tipo veggente, guardia, etc

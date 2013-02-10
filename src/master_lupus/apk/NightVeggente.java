@@ -9,11 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class NightPaparazzo extends Activity  {
+public class NightVeggente extends Activity  {
 
 	Context mContext;	
 	Intent mIntent;
@@ -22,21 +21,21 @@ public class NightPaparazzo extends Activity  {
 		@Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.nightpaparazzo);
+	        setContentView(R.layout.nightveggente);
+	        
+	        Button next = (Button) findViewById(R.id.button20);
 	        
 	        mContext = this;
 	        
-	        Button next = (Button) findViewById(R.id.button8);
-	        ArrayAdapter<String> adapter1 = createSpinnerAdapterSpied();
-	        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	        final Spinner spied = (Spinner) findViewById(R.id.spinner102);
-	        spied.setAdapter(adapter1);
+	        ArrayAdapter<String> adapter = createSpinnerAdapter();
+	        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	        final Spinner choose = (Spinner) findViewById(R.id.spinner1);
+	        choose.setAdapter(adapter);
 	        
 	        next.setOnClickListener(new View.OnClickListener() {
 	            @SuppressWarnings("deprecation")
 				public void onClick(View v) {
-	            	
-	            	String d = spied.getItemAtPosition(spied.getSelectedItemPosition()).toString();
+	            	String d = choose.getItemAtPosition(choose.getSelectedItemPosition()).toString();
 	            	DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
 	            	try {
 	            		 
@@ -50,27 +49,40 @@ public class NightPaparazzo extends Activity  {
 	            	Cursor mCursor = mdbhelper.fetchAllReminders();
 	            	startManagingCursor(mCursor);
 	            	int character = mCursor.getColumnIndexOrThrow(mdbhelper.character);
+	            	int name = mCursor.getColumnIndexOrThrow(mdbhelper.name);
 	            	int id = mCursor.getColumnIndexOrThrow(mdbhelper.id);
 	            	mCursor.moveToFirst();
 	            	while (!mCursor.isAfterLast()) {
 	            		String a = mCursor.getString(character);
-	            		if (a.equals("paparazzo"))  break;
+	            		if (a.equals("veggente")) break;
 	            		mCursor.moveToNext();
 	            	}
 	            	long rowId = mCursor.getLong(id);
 	            	mdbhelper.insertAction(rowId, d);
-	            	mCursor.moveToNext();
-	            	String a = mCursor.getString(character);
+	            	mCursor.moveToFirst();
+	            	while (!mCursor.isAfterLast()) {
+	            		String bbb = mCursor.getString(name);
+	            		if (bbb.equals(d)) break;
+	            		mCursor.moveToNext();
+	            	}
+	            	String aaa = mCursor.getString(character);
 	            	mdbhelper.close();
-	            	if (a.equals("guardian")) mIntent = new Intent(mContext, NightGuardian.class);
-	            	//if (a.equals("veggente")) mIntent = new Intent(mContext, NightVeggente.class);
+	            	if ((aaa.equals("peasant")) || (aaa.equals("guardian")) || (aaa.equals("paparazzo"))) {
+	            		Toast.makeText(getBaseContext(), "è buono (pollice in su)", 
+	            				Toast.LENGTH_LONG).show();
+	            	}
+	            	if ((aaa.equals("werewolf"))) {
+	            		Toast.makeText(getBaseContext(), "è cattivo (pollice in giù)", 
+	            				Toast.LENGTH_LONG).show();
+	            	}
+	            	mIntent = new Intent(mContext, Day.class);
 	            	startActivity(mIntent);
 	            	finish();
 	            }
 	        });
 		}
 		
-		private ArrayAdapter<String> createSpinnerAdapterSpied() {
+private ArrayAdapter<String> createSpinnerAdapter() {
 			
 			int i = 0;
 			
@@ -92,7 +104,7 @@ public class NightPaparazzo extends Activity  {
         	while (!mCursor.isAfterLast()) {
         		String b = mCursor.getString(character);
         		String c = mCursor.getString(action);
-        		if ((!b.equals("paparazzo")) && (!c.equals("dead"))) i = i + 1;
+        		if ((!b.equals("veggente")) && (!c.equals("dead"))) i = i + 1;
         		mCursor.moveToNext();
         	}
         	mdbhelper.close();
@@ -117,7 +129,7 @@ public class NightPaparazzo extends Activity  {
         	while (!mCursor.isAfterLast()) {
         		String b = mCursor.getString(character);
         		String c = mCursor.getString(action);
-        		if ((!b.equals("paparazzo")) && (!c.equals("dead"))) {
+        		if ((!b.equals("veggente")) && (!c.equals("dead"))) {
         			data[i] = mCursor.getString(name);
         			i++;
         		}
@@ -130,4 +142,5 @@ public class NightPaparazzo extends Activity  {
 			// Lo ritorniamo
 			return arrayAdapter3;
 		}
+		
 }
