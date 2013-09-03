@@ -63,7 +63,7 @@ public class NightPaparazzo extends Activity  {
 	            	String a = mCursor.getString(character);
 	            	mdbhelper.close();
 	            	if (a.equals("guardian")) mIntent = new Intent(mContext, NightGuardian.class);
-	            	//if (a.equals("veggente")) mIntent = new Intent(mContext, NightVeggente.class);
+	            	if (a.equals("veggente")) mIntent = new Intent(mContext, NightVeggente.class);
 	            	startActivity(mIntent);
 	            	finish();
 	            }

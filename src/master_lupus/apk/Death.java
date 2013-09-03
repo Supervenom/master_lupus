@@ -45,6 +45,7 @@ public class Death extends Activity{
 	public ArrayAdapter<String> createSpinnerAdapter() {
 		
 		int i = 0;
+		String ba = new String();
 		
 		if (nightOne()) {    
 			i = i + 1;
@@ -96,16 +97,46 @@ public class Death extends Activity{
 			mCursor.moveToFirst();
 			while (!mCursor.isAfterLast()) {
 				String a = mCursor.getString(character);
-				String b = mCursor.getString(action);
-				if ((a.equals("werewolf")) && (!b.equals("label")) && (!b.equals("dead"))) deaths[0] = b;//controllo guardia da aggiungere
-				mCursor.moveToNext();                                             //segnare "dead" ai morti
+				ba = mCursor.getString(action);
+				if ((a.equals("werewolf")) && (!ba.equals("label")) && (!ba.equals("dead"))) deaths[0] = ba;
+				//controllo guardia da aggiungere
+				mCursor.moveToNext();                                            
 			}
 			mdbhelper.close();
+			kill(ba);
 		}
 		// Creiamo l'adapter
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(mContext,android.R.layout.simple_spinner_item, deaths);
 		// Lo ritorniamo
 		return arrayAdapter;
+	}
+	
+	public void kill(String killed) {
+		DataBaseHelper mdbhelper = new DataBaseHelper (mContext);
+    	try {
+    		 
+    		mdbhelper.openDataBase();
+
+    	}catch(SQLException sqle){
+
+    		throw sqle;
+
+    	}
+    	Cursor mCursor = mdbhelper.fetchAllReminders();
+    	startManagingCursor(mCursor);
+    	mCursor.moveToFirst();
+	    int name = mCursor.getColumnIndexOrThrow(mdbhelper.name);
+	    int id = mCursor.getColumnIndexOrThrow(mdbhelper.id);
+		while (!mCursor.isAfterLast()) {
+    		String a = mCursor.getString(name);
+    		if (a.equals(killed)) {
+    			break;
+    		}
+    		mCursor.moveToNext();
+    	}
+		long rowId = mCursor.getLong(id);
+		mdbhelper.insertAction(rowId, "dead");
+		mdbhelper.close();
 	}
 
 }
